@@ -1,0 +1,2 @@
+Hello,
+This ToDo Application was developed to learn the basics of Vue Js. I inspired the user interface from a figma project. You can see it using [https://www.figma.com/design/chNc0r9ePFGAVsbZfaXOGk/ToDo-App-(Community)?node-id=101-180] (this link).

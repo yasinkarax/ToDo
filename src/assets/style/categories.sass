@@ -1,4 +1,8 @@
-@use 'src/assets/style/variable.sass' as  variable
+@use 'variable' as variable
+
+#category
+    border-right: 1px solid #000
+    height: 100vh
 
 .categoryTitle
     display: flex
@@ -9,5 +13,25 @@
 
 .categoryItem
     @include variable.font('Roboto', sans-serif, 1.4rem, 400, normal, #000)
- 
+
+#categoryList ul
+    list-style-type: none
+    padding: 0
     
+    li
+        padding: .5rem 0
+
+
+.addCategory
+    display: flex
+    flex-direction: column
+
+#newCategoryText
+    padding: .5rem
+    outline: none
+    border: none
+
+#addNewCategoryButton
+    width: 13rem
+    padding: .4rem 
+    font-size: 1rem

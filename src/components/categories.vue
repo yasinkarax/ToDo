@@ -1,8 +1,60 @@
+<script>
+export default {
+    data(){
+        return {
+            AddNewCategory: {
+                addCategoryButton: "New category",
+                addCategoryText: "+ Type New Category",
+            },
+            categoryListName: "Categories",
+            newCategoryText: '',
+            showAddCategory: false,
+            categoryCount: 0,
+            categoryList: [
+                {id: 1 , label: 'Favourites'}, 
+                {id: 2 , label: 'Work'}, 
+                {id: 3 , label: 'Home'},]
+        }
+    },
+    methods: {
+        showAddCategoryButton(){
+            this.showAddCategory = !this.showAddCategory;
+        },
+        /*hideAddCategoryButton(e){
+            if(e.relatedTarget.id !== 'addNewCategoryButton' || e.relatedTarget.id == ''){
+                this.showAddCategory = false;
+                console.log(this.showAddCategory)
+            } else{
+                this.showAddCategory = true;
+                console.log(e.relatedTarget.tagName);
+                console.log(this.showAddCategory)
+            }
+        },*/
+        addNewCategory(){
+            if(this.newCategoryText.trim() !== ''){
+                    const newCategory = {
+                    id: this.categoryList.length + 1,
+                    label: this.newCategoryText
+                }
+            this.categoryList.push(newCategory);
+            } 
+            
+            this.newCategoryText = '';
+        }
+    },
+    computed: {
+        categoryCount(){
+            return this.categoryList.length;
+        }
+    }
+}
+</script>
 <style lang="sass">
 @import "@/assets/style/categories.sass"
 
 </style>
 <template>
+    
     <div id="category">
         <div class="categoryTitle" id="categoryTitle">
 
@@ -18,11 +70,11 @@
 
             <ul>
                 <li 
-                    :key="category" 
+                    :key="category.id" 
                     v-for="category in categoryList"
                     class="categoryItem"
                 >
-                    {{category}}
+                    {{category.label}}
                 </li>
             </ul>
 
@@ -38,7 +90,6 @@
             >
 
             <button 
-                v-show="showAddCategory" 
                 @click="addNewCategory"
                 id="addNewCategoryButton"
             >
@@ -48,48 +99,3 @@
         </div>
     </div>
 </template>
-<script>
-export default {
-    data(){
-        return {
-            AddNewCategory: {
-                addCategoryButton: "New category",
-                addCategoryText: "+ Type New Category",
-            },
-            categoryListName: "Categories",
-            newCategoryText: '',
-            showAddCategory: false,
-            categoryCount: 0,
-            categoryList: ['Favourites', 'Work', 'Home', 'School', 'Shopping', 'Other'],
-           
-        }
-    },
-    methods: {
-        showAddCategoryButton(){
-            this.showAddCategory = !this.showAddCategory;
-        },
-        hideAddCategoryButton(e){
-            if(e.relatedTarget.id !== 'addNewCategoryButton' || e.relatedTarget.id == ''){
-                this.showAddCategory = false;
-                console.log(this.showAddCategory)
-            } else{
-                this.showAddCategory = true;
-                console.log(e.relatedTarget.tagName);
-                console.log(this.showAddCategory)
-            }
-        },
-        addNewCategory(){
-            if(this.newCategoryText !== '')
-                this.categoryList.push(this.newCategoryText)
-
-            this.newCategoryText = '';
-            this.categoryCount++;
-        }
-    },
-    computed: {
-        categoryCount(){
-            return this.categoryList.length;
-        }
-    }
-}
-</script>

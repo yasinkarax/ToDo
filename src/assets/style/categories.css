@@ -1,3 +1,8 @@
+#category {
+  border-right: 1px solid #000;
+  height: 100vh;
+}
+
 .categoryTitle {
   display: flex;
   font-size: 2rem;
@@ -19,9 +24,29 @@
   color: #000;
 }
 
+#categoryList ul {
+  list-style-type: none;
+  padding: 0;
+}
+#categoryList ul li {
+  padding: 0.5rem 0;
+}
+
 .addCategory {
   display: flex;
   flex-direction: column;
+}
+
+#newCategoryText {
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+}
+
+#addNewCategoryButton {
+  width: 13rem;
+  padding: 0.4rem;
+  font-size: 1rem;
 }
 
 /*# sourceMappingURL=categories.css.map */

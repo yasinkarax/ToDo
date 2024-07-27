@@ -20,16 +20,6 @@ export default {
         showAddCategoryButton(){
             this.showAddCategory = !this.showAddCategory;
         },
-        /*hideAddCategoryButton(e){
-            if(e.relatedTarget.id !== 'addNewCategoryButton' || e.relatedTarget.id == ''){
-                this.showAddCategory = false;
-                console.log(this.showAddCategory)
-            } else{
-                this.showAddCategory = true;
-                console.log(e.relatedTarget.tagName);
-                console.log(this.showAddCategory)
-            }
-        },*/
         addNewCategory(){
             if(this.newCategoryText.trim() !== ''){
                     const newCategory = {

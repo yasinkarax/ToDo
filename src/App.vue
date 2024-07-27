@@ -1,10 +1,19 @@
 <script>
+import categories from './components/categories.vue'
+import addNewTask from './components/addNewTask.vue'
+import tasklist from './components/taskList.vue'
+
+
 export default {
     data(){
         return {
             categorieList: ['Favourites', 'Work', 'Home', 'School', 'Shopping', 'Other'],
-            taskList: []
         }
+    },
+    components: {
+        categories,
+        addNewTask,
+        tasklist
     }
 }
 </script>
@@ -14,9 +23,9 @@ export default {
             <categories/>
         </div>
         <div class="allTasks">
-            <allTasks/>
-            <taskList :newTask/>
+            <tasklist/>
         </div>
+        
     </div>
 </template>
 

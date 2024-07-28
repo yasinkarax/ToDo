@@ -19,12 +19,8 @@
 <template>
     <div>
         <addNewTask @newTask="showNewTask"/>
-        <div class="taskListContainer">
-            <ul>
-                <li v-for="task in taskList">
-                    {{ task }}
-                </li>
-            </ul>
+        <div id="taskListContainer">
+            <task/>
         </div>
     </div>
 </template>

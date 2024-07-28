@@ -17,14 +17,19 @@
     }
 </script>
 <template>
-    <div>
+    <div id="allTasks">
         <addNewTask @newTask="showNewTask"/>
-        <ul>
-            <li v-for="task in taskList">
-                {{ task }}
-            </li>
-        </ul>
+        <div id="taskList">
+            <ul>
+                <li v-for="task in taskList">
+                    {{ task }}
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="sass">
+@import "@/assets/style/taskList/taskList.sass"
+
+</style>

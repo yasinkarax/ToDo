@@ -3,8 +3,8 @@ export default {
     data(){
         return {
             AddNewCategory: {
-                addCategoryButton: "New category",
-                addCategoryText: "+ Type New Category",
+                addCategoryButton: "Add category",
+                addCategoryText: "+ New Category",
             },
             categoryListName: "Categories",
             newCategoryText: '',
@@ -39,10 +39,6 @@ export default {
     }
 }
 </script>
-<style lang="sass">
-@import "@/assets/style/categories.sass"
-
-</style>
 <template>
     
     <div id="category">
@@ -51,7 +47,7 @@ export default {
             <div class="categoryListName">
                 {{categoryListName}}  
             </div>
-            <div :class="categoryCount">
+            <div class="categoryCount">
                 ({{ categoryCount }})
             </div>
 
@@ -89,3 +85,8 @@ export default {
         </div>
     </div>
 </template>
+
+<style lang="sass" scoped>
+@import "../assets/style/categories/categories.sass"
+
+</style>

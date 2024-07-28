@@ -20,18 +20,26 @@ export default {
 
 
 <template>
-    <h1>{{ head }}</h1>
+    <div class="addTasksContainer">
+        <div class="addTasksHead">
+            <h1>{{ head }}</h1>
+        </div>
 
-    <input 
-        type="text" 
-        :placeholder="addNewTaskText" 
-        v-model="NewTask"
-    >
-    
-    <button @click="sendNewTask">{{ addNewTaskButton }}</button>
-    
+        <div class="addTasks">
+            <input 
+                type="text" 
+                :placeholder="addNewTaskText" 
+                v-model="NewTask"
+                id="newTaskInput"
+            >
+            <button @click="sendNewTask" id="newTaskInput">
+                {{ addNewTaskButton }}
+            </button>
+        </div>
+    </div>
 </template>
 
 
 <style lang="sass" scoped>
+@import '../assets/style/addNewTask/addNewTask.sass'
 </style>

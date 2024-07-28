@@ -19,13 +19,8 @@ export default {
 </script>
 <template>
     <div class="container">
-        <div class="categories">
             <categories/>
-        </div>
-        <div class="allTasks">
             <tasklist/>
-        </div>
-        
     </div>
 </template>
 

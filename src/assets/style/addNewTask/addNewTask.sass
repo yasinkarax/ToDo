@@ -1,0 +1,41 @@
+@use '../variable/_variable' as variable 
+
+$inputBg: #e1dede
+$buttonHover: #d1d1d1
+
+.addTasksContainer
+    padding: 2.5rem 4rem 0rem 1.8rem
+
+.addTasksHead h1
+    @include variable.font('Roboto', sans-serif, 3rem, 700, normal, #000)
+
+.addTasks
+    display: flex
+    flex-direction: column
+    padding: 1.7rem 0rem 0rem 0rem
+
+#newTaskInput
+    padding: .6rem 1rem
+    font-size: 1.1rem
+    outline: none
+    width: 35rem
+    border: none
+    background: $inputBg
+    border-radius: 5px
+    margin: 0rem 0rem .7rem 0rem
+
+#newTaskButton
+    padding: .6rem 1rem
+    font-size: 1.1rem
+    outline: none
+    width: 8rem
+    border: none
+    border-radius: 5px
+    margin: 0rem 0rem .7rem 0rem
+    cursor: pointer
+    &:hover
+        background: $buttonHover
+        transition: 0.3s
+
+
+

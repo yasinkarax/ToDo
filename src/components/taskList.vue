@@ -17,9 +17,9 @@
     }
 </script>
 <template>
-    <div id="allTasks">
+    <div>
         <addNewTask @newTask="showNewTask"/>
-        <div id="taskList">
+        <div class="taskListContainer">
             <ul>
                 <li v-for="task in taskList">
                     {{ task }}
@@ -29,7 +29,6 @@
     </div>
 </template>
 
-<style scoped lang="sass">
-@import "@/assets/style/taskList/taskList.sass"
-
+<style scoped lang='sass'>
+@import '../assets/style/taskList/taskList.sass'
 </style>

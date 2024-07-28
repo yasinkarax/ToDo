@@ -24,7 +24,7 @@ export default {
         <div class="addTasksHead">
             <h1>{{ head }}</h1>
         </div>
-
+    
         <div class="addTasks">
             <input 
                 type="text" 
@@ -32,11 +32,11 @@ export default {
                 v-model="NewTask"
                 id="newTaskInput"
             >
-            <button @click="sendNewTask" id="newTaskInput">
+            <button @click="sendNewTask" id="newTaskButton">
                 {{ addNewTaskButton }}
             </button>
         </div>
-    </div>
+</div>
 </template>
 
 

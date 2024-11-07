@@ -7,7 +7,15 @@ import tasklist from './components/taskList.vue'
 export default {
     data(){
         return {
-            categorieList: ['Favourites', 'Work', 'Home', 'School', 'Shopping', 'Other'],
+            categoryList: [
+                {id: 1, name: 'Other'},
+                {id: 2, name: 'Work'},
+                {id: 3, name: 'Home'},
+                {id: 4, name: 'Personal'}
+            ],
+            taskList: [
+                {id: 1, title: 'Task 1', category: 'Work', completed: false}
+            ]
         }
     },
     components: {
@@ -20,9 +28,10 @@ export default {
 <template>
     <div class="container">
         <div class="categories">
-            <categories/>
+            <categories />
         </div>
         <div class="allTasks">
+            <addNewTask :categoryList="categoryList" />
             <tasklist/>
         </div>
     </div>

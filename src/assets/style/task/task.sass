@@ -1,0 +1,29 @@
+@use "../variable/variable" as variable
+$taskCheckColor: #eb5757
+
+#task
+    @include variable.font('Roboto', sans-serif, 1.5rem, 400, normal, #000)
+    display: flex
+    justify-content: space-between
+    margin-top: 1rem
+    &:hover
+        cursor: pointer
+
+    .taskCheck
+        width: 2rem
+        border-radius: 34%
+        height: 2rem
+        border: 3px solid $taskCheckColor
+        position: relative
+        color: red
+        #checkIcon
+            width: 2rem
+            position: absolute
+            top: -10px
+            right: -7px
+
+    #taskText
+        align-self: center
+        margin: 0 0 0 1rem
+        &::first-letter
+            text-transform: uppercase

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="198.29083mm"
+   height="223.5262mm"
+   viewBox="0 0 198.29083 223.5262"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="check.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   sodipodi:docname="check.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="true">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="-5.704916"
+       originy="-20.016128"
+       spacingx="0.99999998"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline;opacity:1"
+     transform="translate(-5.7049161,-20.016128)">
+    <path
+       style="display:inline;fill:#39ae68;fill-opacity:1;stroke:none;stroke-width:0.536895;stroke-dasharray:none;stroke-opacity:1"
+       d="M 43.036336,194.1474 C 22.572934,166.802 5.7742514,144.28797 5.705937,144.11619 5.5259786,143.66363 29.196048,118.58363 29.650335,118.7456 c 0.209911,0.0749 8.818081,10.63134 19.12939,23.45902 23.678939,29.45746 30.636104,38.00792 31.218081,38.36763 0.60337,0.37289 -2.653172,5.60404 47.382734,-76.11323 24.00924,-39.211109 45.43625,-74.201384 47.61565,-77.75612 2.17939,-3.554726 4.12389,-6.562861 4.32107,-6.684741 0.19718,-0.121877 5.83054,5.253425 12.51853,11.945112 l 12.15996,12.166702 -49.59904,80.233597 C 89.29536,229.67445 80.944102,243.15453 80.562888,243.54125 80.386675,243.71995 63.499763,221.49279 43.036336,194.1474 Z"
+       id="path6"
+       inkscape:export-filename="g"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>

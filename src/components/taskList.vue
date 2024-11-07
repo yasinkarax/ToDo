@@ -12,13 +12,11 @@
             }
         },
         components: {
-            addNewTask
         }
     }
 </script>
 <template>
     <div>
-        <addNewTask @newTask="showNewTask"/>
         <div id="taskListContainer">
             <task/>
         </div>

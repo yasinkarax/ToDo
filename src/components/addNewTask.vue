@@ -1,19 +1,13 @@
 <script>
-
 export default {
     data() {
         return {
             head: 'All Tasks',
-            addNewTaskText: 'Add a new task',
+            inputText: 'Add a new task',
             addNewTaskButton: 'Add Task',
             NewTask: '',
-            category: null,
-        }
-    },
-    methods: {
-        sendNewTask(){
-            this.$emit('newTask', this.NewTask);
-            this.NewTask = '';
+            category: '',
+            categoryAlert: false
         }
     },
     props: {
@@ -21,39 +15,47 @@ export default {
             type: Array,
             required: true
         }
+    },
+    methods: {
+        sendNewTask() {
+            if (this.category > 0 && this.NewTask.trim() !== '') {
+                this.$emit('add-new-task', this.NewTask, this.category);
+                this.NewTask = '';
+                this.category = '';
+                this.categoryAlert = !this.categoryAlert
+            } else {
+                this.categoryAlert = true;
+                console.log('hata')
+            }
+        }
     }
+
 }
 </script>
-
-
 <template>
     <div class="addTasksContainer">
         <div class="addTasksHead">
             <h1>{{ head }}</h1>
         </div>
-    
-        <div class="addTask">
-            <input 
-                type="text" 
-                :placeholder="addNewTaskText" 
-                v-model="NewTask"
-                id="newTaskInput"
-            >
-            <select v-model="category">
-                <option :value="null">Please select a category</option>
-                <option v-for="category in categoryList" :key="category.id" :value="category">
-                    {{ category.name }}
-                </option>
-            </select>
-        </div>
-        <div class="addTaskButton">
+        <div class="addTasks">
+            <div class="newTask">
+                <input type="text" :placeholder="inputText" v-model="NewTask" id="newTaskInput">
+                <div id="categories">
+                    <select v-model="category" id="categorySelect">
+                        <option value="" disabled >Select a category</option>
+                        <option :value="category.id" :key="category.id" v-for="category in categoryList">
+                            {{ category.name }}
+                        </option>
+                   </select>
+                </div>
+            </div>
+             <div id="categoryAlert" v-if="categoryAlert">Don't forget a task and select a category, please!</div>
             <button @click="sendNewTask" id="newTaskButton">
                 {{ addNewTaskButton }}
             </button>
         </div>
-</div>
+    </div>
 </template>
-
 
 <style lang="sass" scoped>
 @import '../assets/style/addNewTask/addNewTask.sass'

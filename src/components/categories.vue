@@ -4,36 +4,29 @@ export default {
         return {
             AddNewCategory: {
                 addCategoryButton: "New category",
-                addCategoryText: "+ Type New Category",
+                addCategoryText: "Add New Category",
             },
             categoryListName: "Categories",
-            newCategoryText: '',
-            showAddCategory: false,
+            newCategory: '',
             categoryCount: 0,
-            categoryList: [
-                {id: 1 , label: 'Favourites'}, 
-                {id: 2 , label: 'Work'}, 
-                {id: 3 , label: 'Home'},]
+        }
+    },
+    props: {
+        categoryList: {
+            type: Array,
+            required: true
         }
     },
     methods: {
-        showAddCategoryButton(){
-            this.showAddCategory = !this.showAddCategory;
-        },
         addNewCategory(){
-            if(this.newCategoryText.trim() !== ''){
-                    const newCategory = {
-                    id: this.categoryList.length + 1,
-                    label: this.newCategoryText
-                }
-            this.categoryList.push(newCategory);
-            } 
-            
-            this.newCategoryText = '';
+            if (this.newCategory.trim() !== '') {
+                this.$emit('add-category', this.newCategory);
+                this.newCategory = '';
+            }
         }
     },
     computed: {
-        categoryCount(){
+        categoryCounter(){
             return this.categoryList.length;
         }
     }
@@ -49,7 +42,7 @@ export default {
                 {{categoryListName}}  
             </div>
             <div :class="categoryCount">
-                ({{ categoryCount }})
+                ({{ categoryCounter }})
             </div>
 
         </div>
@@ -61,19 +54,19 @@ export default {
                     v-for="category in categoryList"
                     class="categoryItem"
                 >
-                    {{category.label}}
+                    {{category.name}}
                 </li>
             </ul>
 
         </div>
         <div class="addCategory" id="addCategory">
 
-            <input name="newCategory" 
-                @focus="showAddCategoryButton"
+            <input 
+                name="newCategory" 
                 type="text" 
-                v-model="newCategoryText" 
+                v-model="newCategory" 
                 :placeholder="AddNewCategory.addCategoryText"
-                id="newCategoryText"
+                id="newCategory"
             >
 
             <button 

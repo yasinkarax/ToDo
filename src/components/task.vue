@@ -1,5 +1,4 @@
 <script>
-
     export default{
         data(){
             return {
@@ -10,13 +9,9 @@
         },
         props: {
             task: {
-                type: String,
+                type: Object,
                 required: true
             },
-            categorie: {
-                type: String,
-                required: false
-            }
         },
         components: {
         }
@@ -29,11 +24,11 @@
         
         </div>
         <div id="taskText">
-            {{ task }}
+            {{ task.name }}
         </div>
         
         <div id="taskCategory">
-            {{ taskCategories }}
+            {{ task.category }}
         </div>
     </div>
 </template>

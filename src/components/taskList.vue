@@ -1,24 +1,26 @@
 <script>
-    import addNewTask from './addNewTask.vue'
+    //import addNewTask from './addNewTask.vue'
+    import task from './task.vue'
     export default {
         data(){
             return {
-                taskList: []
-            }
-        },
-        methods: {
-            showNewTask(newTask){
-                this.taskList.push(newTask);
             }
         },
         components: {
+            task
+        },
+        props: {
+            taskList: {
+                type: Array,
+                required: true
+            }
         }
     }
 </script>
 <template>
     <div>
         <div id="taskListContainer">
-            <task/>
+            <task :task="task" v-for="task in taskList" :key="task.id"/>
         </div>
     </div>
 </template>

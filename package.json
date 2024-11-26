@@ -1,5 +1,6 @@
 {
   "name": "todo",
+  "homepage": "https://yasinkarax.github.io/todo/",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -11,6 +12,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "build": "vue-cli-service build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {

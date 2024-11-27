@@ -58,7 +58,7 @@ export default {
         <div class="categories">
             <categories @add-category="addCategory" :categoryList="categoryList"/>
         </div>
-        <div class="allTasks">
+        <div class="allTasks" style="color:red">
             <addNewTask :categoryList="categoryList" @add-new-task="takeNewTask"/>
             <tasklist :taskList="taskList"/>
         </div>

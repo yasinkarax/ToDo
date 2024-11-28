@@ -23,7 +23,7 @@
            <img id="checkIcon"  src="../assets/icons/check.svg" alt="">
         
         </div>
-        <div id="taskText">
+        <div id="taskText" style="color:red">
             {{ task.name }}
         </div>
         

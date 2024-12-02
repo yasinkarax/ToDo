@@ -1,5 +1,6 @@
 @use '../variable/_variable' as variable 
-@use '../buttons/buttons' as buttons
+@use '../elements/buttons' as buttons
+@use '../elements/inputs' as inputs
 
 $inputBg: #e1dede
 $buttonHover: #d1d1d1
@@ -16,16 +17,11 @@ $buttonHover: #d1d1d1
     padding: 1.7rem 0rem 0rem 0rem
 
 #newTaskInput
-    padding: .6rem 1rem
-    font-size: 1.1rem
-    outline: none
-    width: 35rem
-    border: none
-    background: $inputBg
-    border-radius: 5px
-    margin: 0rem 0rem .7rem 0rem
+    @include inputs.input(0.6rem, 1.6rem, 35rem, $inputBg, 0rem 0rem 1rem 0rem, #ffe54c)
 
 #newTaskButton
     @include buttons.button(1.5em, 200, 0.0625rem solid black, rgba(0, 0, 0, 0), #ffe54c)
 
+
+  
 

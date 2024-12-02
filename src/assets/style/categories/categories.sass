@@ -1,5 +1,9 @@
 @use '../variable/_variable' as variable
-@use '../buttons/buttons' as buttons
+@use '../elements/buttons' as buttons
+@use '../elements/inputs' as inputs
+
+$inputBg: #e1dede
+$buttonHover: #d1d1d1
 
 #category
     border-right: 1px solid #000
@@ -41,8 +45,5 @@
 
 
 //input css
-#newCategoryInput
-    border: none
-    font-size: 1rem
-    padding: 0.5rem 1rem
-    @include variable.font('Roboto', sans-serif, 1.3rem, 400, normal, #000)
+#newCategory
+    @include inputs.input(0.6rem, 1.1rem, 100%, $inputBg, 0rem 0rem .7rem 0rem, #ffe54c)

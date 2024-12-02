@@ -76,15 +76,19 @@
   left: 0;
 }
 
-#newCategoryInput {
+#newCategory {
+  padding: 0.6rem;
+  font-size: 1.1rem;
+  outline: none;
+  width: 100%;
   border: none;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  font-size: 1.3rem;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #000;
+  background: #e1dede;
+  border-radius: 5px;
+  margin: 0rem 0rem 0.7rem 0rem;
+  box-sizing: border-box;
+}
+#newCategory:focus {
+  border: 1px solid #ffe54c;
 }
 
 /*# sourceMappingURL=categories.css.map */

@@ -1,0 +1,12 @@
+@mixin input($padding, $fontSize, $width, $background, $margin, $borderColor)   
+    padding: $padding
+    font-size: $fontSize
+    outline: none
+    width: $width
+    border: none
+    background: $background
+    border-radius: 5px
+    margin: $margin
+    box-sizing: border-box
+    &:focus
+        border: 1px solid $borderColor

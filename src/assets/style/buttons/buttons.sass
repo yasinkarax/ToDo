@@ -1,0 +1,30 @@
+@mixin button($fontSize, $fontWeight, $border, $backgroundColor, $afterBg)
+    font:
+        size: $fontSize
+        weight: $fontWeight
+    letter-spacing: 0.0625rem
+    letter-spacing: 0.0625rem
+    padding: 0.8125rem 1.25rem 0.8125rem
+    outline: 0
+    border: $border
+    cursor: pointer
+    position: relative
+    background-color: $backgroundColor
+    user-select: none
+    -webkit-user-select: none
+    touch-action: manipulation
+    &:after 
+        content: ""
+        background-color: $afterBg
+        width: 100%
+        z-index: -1
+        position: absolute
+        height: 100%
+        top: 0.4375rem/* 7px */
+        left: 0.4375rem/* 7px */
+        transition: 0.2s
+    &:hover:after
+        top: 0
+        left: 0
+        
+

@@ -1,4 +1,5 @@
 @use '../variable/_variable' as variable
+@use '../buttons/buttons' as buttons
 
 #category
     border-right: 1px solid #000
@@ -15,31 +16,33 @@
 .categoryCount
     padding-left: 0.5rem
 
-#newCategoryText
-    padding: .5rem
-    font-size: 1.1rem
-    outline: none
-    border: none
-    margin: .6rem 0rem
-
 .categoryItem
     @include variable.font('Roboto', sans-serif, 1.4rem, 400, normal, #000)
 
 #categoryList ul
     list-style-type: none
     padding: 1rem 0rem 0rem 1rem
-    
     li
         padding: .5rem 0
 
-
+// button and input styles
 .addCategory
     display: flex
     flex-direction: column
     padding: 0rem 0rem 0rem 1rem
+    border: none
 
+
+
+/* CSS */
 #addNewCategoryButton
-    width: 13rem
-    padding: .4rem 
+    @include buttons.button(1.5em, 200, 0.0625rem solid black, rgba(0, 0, 0, 0), #ffe54c)
+
+
+
+//input css
+#newCategoryInput
+    border: none
     font-size: 1rem
-    cursor: pointer
+    padding: 0.5rem 1rem
+    @include variable.font('Roboto', sans-serif, 1.3rem, 400, normal, #000)

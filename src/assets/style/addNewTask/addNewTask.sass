@@ -1,4 +1,5 @@
 @use '../variable/_variable' as variable 
+@use '../buttons/buttons' as buttons
 
 $inputBg: #e1dede
 $buttonHover: #d1d1d1
@@ -25,17 +26,6 @@ $buttonHover: #d1d1d1
     margin: 0rem 0rem .7rem 0rem
 
 #newTaskButton
-    padding: .6rem 1rem
-    font-size: 1.1rem
-    outline: none
-    width: 8rem
-    border: none
-    border-radius: 5px
-    margin: 0rem 0rem .7rem 0rem
-    cursor: pointer
-    &:hover
-        background: $buttonHover
-        transition: 0.3s
-
+    @include buttons.button(1.5em, 200, 0.0625rem solid black, rgba(0, 0, 0, 0), #ffe54c)
 
 

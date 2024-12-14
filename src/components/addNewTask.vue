@@ -6,8 +6,9 @@ export default {
             inputText: 'Add a new task',
             addNewTaskButton: 'Add Task',
             NewTask: '',
-            category: '',
-            categoryAlert: false
+            categoryAlert: false,
+            selectedCategory: '',
+            visibilityCategories: true
         }
     },
     props: {
@@ -18,15 +19,24 @@ export default {
     },
     methods: {
         sendNewTask() {
-            if (this.category > 0 && this.NewTask.trim() !== '') {
-                this.$emit('add-new-task', this.NewTask, this.category);
+            if (this.selectedCategory.id > 0 && this.NewTask.trim() !== '') {
+                this.$emit('add-new-task', this.NewTask, this.selectedCategory);
                 this.NewTask = '';
-                this.category = '';
-                this.categoryAlert = !this.categoryAlert
+                this.selectedCategory = '';
+                this.categoryAlert = !this.categoryAlert;
+                this.selectedCategory = !this.selectedCategory;
             } else {
                 this.categoryAlert = true;
                 console.log('hata')
             }
+        },
+        categoriesToggle() {
+            this.visibilityCategories = !this.visibilityCategories;
+        },
+        chooseCategory(category) {
+            this.visibilityCategories = !this.visibilityCategories;
+            this.selectedCategory = category;
+            console.log(this.selectedCategory);
         }
     }
 
@@ -37,26 +47,44 @@ export default {
         <div class="addTasksHead">
             <h1>{{ head }}</h1>
         </div>
-        <div class="addTasks">
-            <div class="newTask">
+        <div id="newTask">
+            <div id="newTaskInputContainer">
                 <input type="text" :placeholder="inputText" v-model="NewTask" id="newTaskInput">
-                <div id="categories">
-                    <select v-model="category" id="categorySelect">
-                        <option value="" disabled >Select a category</option>
-                        <option :value="category.id" :key="category.id" v-for="category in categoryList">
-                            {{ category.name }}
-                        </option>
-                   </select>
+            </div>
+            <div id="categories">
+                <div 
+                    id="categoriesToggle"
+                    tabindex="0" 
+                    @click="categoriesToggle"
+                    :style="[selectedCategory.colors,]"
+                    >
+                    <span v-if="!selectedCategory">Select a category</span>
+                    {{ selectedCategory.name }}
+                </div>
+
+                <div 
+                    tabindex="0" 
+                    class="category" 
+                    @click="chooseCategory(category)" 
+                    :class="{visibilityCategories: visibilityCategories}"
+                    :style="[category.colors]"
+                    :key="category.id" 
+                    v-for="category in categoryList">
+                    {{ category.name }}
                 </div>
             </div>
-             <div id="categoryAlert" v-if="categoryAlert">Don't forget a task and select a category, please!</div>
-            <button @click="sendNewTask" id="newTaskButton">
-                {{ addNewTaskButton }}
-            </button>
         </div>
+
+        <div id="categoryAlert" v-if="categoryAlert">Don't forget a task and select a category, please!</div>
+        <button @click="sendNewTask" id="newTaskButton">
+            {{ addNewTaskButton }}
+        </button>
     </div>
 </template>
 
 <style lang="sass" scoped>
 @import '../assets/style/addNewTask/addNewTask.sass'
 </style>
+1800 66
+100 x
+x1800= 100x66

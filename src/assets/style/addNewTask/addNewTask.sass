@@ -11,17 +11,41 @@ $buttonHover: #d1d1d1
 .addTasksHead h1
     @include variable.font('Roboto', sans-serif, 3rem, 700, normal, #000)
 
-.addTasks
+#newTask
+    display: flex
+    position: relative
+    //align-items: center
+
+//category styling in #categories
+#categories
     display: flex
     flex-direction: column
-    padding: 1.7rem 0rem 0rem 0rem
+    width: max-content
+    cursor: pointer
+    margin: 5px 0 0 0
+    right: 1rem
+    position: absolute
+    @include variable.font('Roboto', sans-serif, 1.3rem, 400, normal, #000000)
+    text-align: center
+    
+#categoriesToggle
+    background: #1d1313
+    color: #fff 
+    margin: 0 0 !important
+
+.visibilityCategories
+    display: none
+    
+#categories div
+    border-radius: 1rem
+    padding: 0.5rem .7rem
+    margin-top: 1.5rem
+
 
 #newTaskInput
-    @include inputs.input(0.6rem, 1.6rem, 35rem, $inputBg, 0rem 0rem 1rem 0rem, #ffe54c)
+    @include inputs.input(0.6rem, 1.6rem, 35rem, $inputBg, 0rem, #ffe54c)
 
 #newTaskButton
     @include buttons.button(1.5em, 200, 0.0625rem solid black, rgba(0, 0, 0, 0), #ffe54c, 1.6rem 0rem 0rem 0rem)
-    
 
-  
 

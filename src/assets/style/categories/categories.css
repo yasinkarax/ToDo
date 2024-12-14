@@ -53,7 +53,7 @@
   letter-spacing: 0.0625rem;
   padding: 0.8125rem 1.25rem 0.8125rem;
   outline: 0;
-  border: 0.0625rem solid black;
+  border: 0.0625rem solid rgb(0, 0, 0);
   cursor: pointer;
   position: relative;
   background-color: rgba(0, 0, 0, 0);

@@ -85,6 +85,3 @@ export default {
 <style lang="sass" scoped>
 @import '../assets/style/addNewTask/addNewTask.sass'
 </style>
-1800 66
-100 x
-x1800= 100x66

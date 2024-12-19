@@ -67,6 +67,7 @@ export default {
                 v-model="newCategory" 
                 :placeholder="AddNewCategory.addCategoryText"
                 id="newCategory"
+                maxlength="19"
             >
 
             <button 

@@ -5,10 +5,12 @@ export default {
             head: 'All Tasks',
             inputText: 'Add a new task',
             addNewTaskButton: 'Add Task',
-            NewTask: '',
-            categoryAlert: false,
-            selectedCategory: '',
-            visibilityCategories: true
+            NewTask: {
+                task: '',
+                category: ''
+            },
+            errorMessage: false,
+            visibilityCategories: true,
         }
     },
     props: {
@@ -19,15 +21,12 @@ export default {
     },
     methods: {
         sendNewTask() {
-            if (this.selectedCategory.id > 0 && this.NewTask.trim() !== '') {
-                this.$emit('add-new-task', this.NewTask, this.selectedCategory);
-                this.NewTask = '';
-                this.selectedCategory = '';
-                this.categoryAlert = !this.categoryAlert;
-                this.selectedCategory = !this.selectedCategory;
+            if(this.NewTask.task.trim()){
+                this.$emit('take-new-task', this.NewTask);
+                this.NewTask = {task: '', category: ''};
+                this.errorMessage = !this.errorMessage;
             } else {
-                this.categoryAlert = true;
-                console.log('hata')
+                this.errorMessage = true;
             }
         },
         categoriesToggle() {
@@ -35,10 +34,15 @@ export default {
         },
         chooseCategory(category) {
             this.visibilityCategories = !this.visibilityCategories;
-            this.selectedCategory = category;
-            console.log(this.selectedCategory);
-        }
-    }
+            this.NewTask.category = category;
+            console.log(this.$refs.category)
+        },
+        closeCategoryList(event){
+            if(event.target.class !== 'category'){
+                this.visibilityCategories = false;
+            }
+        },
+    },
 
 }
 </script>
@@ -47,38 +51,57 @@ export default {
         <div class="addTasksHead">
             <h1>{{ head }}</h1>
         </div>
-        <div id="newTask">
-            <div id="newTaskInputContainer">
-                <input type="text" :placeholder="inputText" v-model="NewTask" id="newTaskInput">
-            </div>
-            <div id="categories">
-                <div 
-                    id="categoriesToggle"
-                    tabindex="0" 
-                    @click="categoriesToggle"
-                    :style="[selectedCategory.colors,]"
+        <form @submit.prevent="sendNewTask">
+            <div id="newTask" >
+                <div id="newTaskInputContainer">
+                    <input 
+                        type="text" 
+                        :placeholder="inputText" 
+                        v-model="NewTask.task" 
+                        id="newTaskInput"
+                        required
+                        maxlength="20"
                     >
-                    <span v-if="!selectedCategory">Select a category</span>
-                    {{ selectedCategory.name }}
                 </div>
-
                 <div 
-                    tabindex="0" 
-                    class="category" 
-                    @click="chooseCategory(category)" 
-                    :class="{visibilityCategories: visibilityCategories}"
-                    :style="[category.colors]"
-                    :key="category.id" 
-                    v-for="category in categoryList">
-                    {{ category.name }}
+                    id="categories"
+                    :class="{scrollCategories: categoryList.length > 5}"
+                    >
+                    <div 
+                        id="categoriesToggle"
+                        tabindex="0" 
+                        @click="categoriesToggle"
+                        :style="[NewTask.category.colors,]"
+                        >
+                        <span v-if="!NewTask.category">Select a category</span>
+                        {{ NewTask.category.name }}
+                    </div>
+
+                    <div 
+                        tabindex="0" 
+                        class="category" 
+                        ref="category"
+                        @click="chooseCategory(category)" 
+                        :class="{visibilityCategories: visibilityCategories}"
+                        :style="[category.colors]"
+                        :key="category.id" 
+                        v-for="category in categoryList">
+                        {{ category.name }}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div id="categoryAlert" v-if="categoryAlert">Don't forget a task and select a category, please!</div>
-        <button @click="sendNewTask" id="newTaskButton">
-            {{ addNewTaskButton }}
-        </button>
+            <div 
+                id="categoryAlert" 
+                v-if="errorMessage"
+                role="alert"
+            >
+                <h2>Please type a task!</h2>
+            </div>
+            <button type="submit" id="newTaskButton">
+                {{ addNewTaskButton }}
+            </button>
+        </form>
     </div>
 </template>
 

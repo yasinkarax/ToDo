@@ -22,12 +22,14 @@ $buttonHover: #d1d1d1
 //category styling in #categories
 #categories
     width: max-content
+    padding: 0 .5rem 0 0
     cursor: pointer
     @include variable.font('Roboto', sans-serif, 1.3rem, 400, normal, #000000)
     text-align: center
     position: absolute
     right: 1rem
     top: .6rem
+    height: 16.6rem
     
 #categoriesToggle
     background: #1d1313
@@ -48,6 +50,11 @@ $buttonHover: #d1d1d1
 //#newTaskInputContainer
   //  padding: 0 2rem 0 0
 
+.scrollCategories
+    overflow-y: auto
+    scrollbar-width: thin 
+    scrollbar-color: black #c7c7c7
+
 #newTaskInput
     @include inputs.input(0.6rem, 1.6rem, 25rem, $background, 0rem, #ffe54c)
     padding: 1rem
@@ -55,4 +62,13 @@ $buttonHover: #d1d1d1
 #newTaskButton
     @include buttons.button(1.5em, 200, 0.0625rem solid black, rgba(0, 0, 0, 0), #ffe54c, 1.6rem 0rem 3rem 0rem)
 
+#categoryAlert
+    margin: 1rem 0 0 0 
+    background: rgb(236 182 182 / 34%)
+    padding: 1rem 2.5rem
+    width: max-content
+    border-left: .5rem solid red
+    h2
+        @include variable.font('Roboto', sans-serif, 1.7rem, 400, normal,rgb(255, 0, 0))
 
+    

@@ -3,8 +3,8 @@ export default {
     data(){
         return {
             AddNewCategory: {
-                addCategoryButton: "New category",
-                addCategoryText: "Add New Category",
+                addCategoryButton: "Add New category",
+                addCategoryText: "Type a category",
             },
             categoryListName: "Categories",
             newCategory: '',
@@ -23,6 +23,8 @@ export default {
                 this.$emit('add-category', this.newCategory);
                 this.newCategory = '';
             }
+            
+            console.log(this.categoryList.length)
         }
     },
     computed: {
@@ -46,7 +48,10 @@ export default {
             </div>
 
         </div>
-        <div id="categoryList">
+        <div 
+            id="categoryList"
+            :class="{scrollCategories: categoryList.length > 6}"
+            >
 
             <ul>
                 <li 
@@ -61,7 +66,8 @@ export default {
         </div>
         <div class="addCategory" id="addCategory">
 
-            <input 
+            <form @submit.prevent="addNewCategory">
+                <input 
                 name="newCategory" 
                 type="text" 
                 v-model="newCategory" 
@@ -70,12 +76,13 @@ export default {
                 maxlength="19"
             >
 
-            <button 
-                @click="addNewCategory"
-                id="addNewCategoryButton"
-            >
-                {{AddNewCategory.addCategoryButton}}
-            </button>
+                <button 
+                    type="submit"
+                    id="addNewCategoryButton"
+                >
+                    {{AddNewCategory.addCategoryButton}}
+                </button>
+            </form>
 
         </div>
     </div>

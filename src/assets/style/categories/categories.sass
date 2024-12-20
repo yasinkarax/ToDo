@@ -21,13 +21,23 @@ $buttonHover: #d1d1d1
     padding-left: 0.5rem
 
 .categoryItem
-    @include variable.font('Roboto', sans-serif, 1.4rem, 400, normal, #000)
+    @include variable.font('Roboto', sans-serif, 1.7rem, 400, normal, #000)
 
-#categoryList ul
-    list-style-type: none
-    padding: 1rem 0rem 0rem 1rem
-    li
-        padding: .5rem 0
+
+#categoryList
+    margin: 1rem 0 0 0
+    max-height: 20rem
+    padding: 0 1rem 0 0
+    ul
+        list-style-type: none
+        padding: 1rem 0rem 0rem 1rem
+        li
+            padding: .5rem 0
+
+.scrollCategories
+    overflow-y: auto
+    scrollbar-width: thin 
+    scrollbar-color: black #c7c7c7
 
 // button and input styles
 .addCategory
@@ -35,15 +45,16 @@ $buttonHover: #d1d1d1
     flex-direction: column
     padding: 0rem 0rem 0rem 1rem
     border: none
+    margin: 2rem 0 0 0 
+    *
+        display: block
 
-
-
-/* CSS */
 #addNewCategoryButton
-    @include buttons.button(1.5em, 200, 0.0625rem solid black, rgba(0, 0, 0, 0), #ffe54c)
-
+    @include buttons.button(1.5em, 200, 0.0625rem solid black, rgba(0, 0, 0, 0), #ffe54c, 0, 1rem .8rem)
+    margin: .3rem 0 0 0
 
 
 //input css
 #newCategory
     @include inputs.input(0.6rem, 1.1rem, 100%, $inputBg, 0rem 0rem .7rem 0rem, #ffe54c)
+    width: 15rem

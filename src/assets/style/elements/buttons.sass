@@ -1,11 +1,11 @@
-@mixin button($fontSize, $fontWeight, $border, $backgroundColor, $afterBg, $margin: 0)
+@mixin button($fontSize, $fontWeight, $border, $backgroundColor, $afterBg, $margin: 0, $padding)
     font:
         size: $fontSize
         weight: $fontWeight
     letter-spacing: 0.0625rem
     margin: $margin
     letter-spacing: 0.0625rem
-    padding: 0.8125rem 1.25rem 0.8125rem
+    padding: $padding
     outline: 0
     border: $border
     cursor: pointer

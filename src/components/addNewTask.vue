@@ -23,11 +23,11 @@ export default {
         sendNewTask() {
             if(this.NewTask.task.trim()){
                 this.$emit('take-new-task', this.NewTask);
-                this.NewTask = {task: '', category: ''};
-                this.errorMessage = !this.errorMessage;
             } else {
                 this.errorMessage = true;
             }
+            this.NewTask = {task: '', category: ''};
+            
         },
         categoriesToggle() {
             this.visibilityCategories = !this.visibilityCategories;

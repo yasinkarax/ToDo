@@ -35,7 +35,6 @@ export default {
         chooseCategory(category) {
             this.visibilityCategories = !this.visibilityCategories;
             this.NewTask.category = category;
-            console.log(this.$refs.category)
         },
         closeCategoryList(event){
             if(event.target.class !== 'category'){

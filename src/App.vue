@@ -7,21 +7,17 @@ import tasklist from './components/taskList.vue'
 export default {
     data() {
         return {
-            task: '',
-            category: '',
-            taskCategory: '',
-            id: 0,
             categoryList: [
-                { id: 1, name: 'Other', colors: { color: '#000000', backgroundColor: '#787FF6' } },
-                { id: 2, name: 'Work', colors: { color: '#000000', backgroundColor: '#FF9190' } },
-                { id: 3, name: 'Home', colors: { color: '#000000', backgroundColor: '#56C596' } },
-                { id: 4, name: 'Personal', colors: { color: '#000000', backgroundColor: '#FFCFEF' } },
+                { id: 0, name: 'Other', colors: { color: '#000000', backgroundColor: '#787FF6' } },
+                { id: 1, name: 'Work', colors: { color: '#000000', backgroundColor: '#FF9190' } },
+                { id: 2, name: 'Home', colors: { color: '#000000', backgroundColor: '#56C596' } },
+                { id: 3, name: 'Personal', colors: { color: '#000000', backgroundColor: '#FFCFEF' } },
             ],
             taskList: [
-                { id: 1, name: 'Task 1', category: 'Work', completed: false },
-                { id: 1, name: 'Task 1', category: 'Work', completed: false },
-                { id: 1, name: 'Task 1', category: 'Work', completed: false },
-                { id: 1, name: 'Task 1', category: 'Work', completed: false },
+                { id: 0, name: 'Finish the project report.', category: 'Work', completed: false },
+                { id: 1, name: 'Clean the living room.', category: 'Work', completed: false },
+                { id: 2, name: 'Go for a 30-minute walk.', category: 'Work', completed: false },
+                { id: 3, name: 'Plan your next vacation.', category: 'Work', completed: false },
             ]
         }
     },
@@ -36,25 +32,34 @@ export default {
             this.categoryList.push({
                 id: this.categoryList.length + 1,
                 name: this.category,
-                colors: { color: '#000000', backgroundColor: this.randomColor() }
+                colors: { color: '#000000', backgroundColor: this.randomColor }
             });
         },
-        takeNewTask(task, category) {
-            this.task = task;
-            this.taskCategory = category;
-            this.taskList.push({
-                id: this.categoryList.length + 1,
-                name: this.task,
-                category: this.taskCategory
-            })
+        takeNewTask(NewTask){
+            this.taskList.push(
+                {
+                    id: this.taskId,
+                    name: NewTask.task,
+                    category: NewTask.category.name,
+                    completed: false
+                }
+            )
+            console.log(NewTask)
+        }
+        
+    },
+    computed: {
+        categoryId(){
+            return this.categoryList.length + 1;
+        },
+        taskId(){
+            return this.taskList.length + 1;
         },
         randomColor() {
             let color = Math.floor(Math.random() * this.categoryList.length);
             let bgColor = this.categoryList[color].colors.backgroundColor;
             return bgColor;
         }
-    },
-    computed: {
     }
 }
 </script>
@@ -64,7 +69,7 @@ export default {
             <categories @add-category="addCategory" :categoryList="categoryList" />
         </div>
         <div class="allTasks" style="color:red">
-            <addNewTask :categoryList="categoryList" @add-new-task="takeNewTask" />
+            <addNewTask :categoryList="categoryList" @take-new-task="takeNewTask" />
             <tasklist :taskList="taskList" />
         </div>
     </div>

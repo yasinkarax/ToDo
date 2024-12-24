@@ -5,7 +5,10 @@
             }
         },
         methods: {
-            
+            completed(){
+                this.task.completed = !this.task.completed;
+                console.log(this.task.completed)
+            }
         },
         props: {
             task: {
@@ -18,12 +21,13 @@
     }
 </script>                     
 <template>
-    <div id="task">
-        <div class="taskCheck" @click="checked">
-           <img id="checkIcon"  src="../assets/icons/check.svg" alt="">
-        
+    <div id="task" >
+        <div class="taskCheck" @click.prevent="completed()">
+            <div id="taskCheckIcon"  >
+                <img v-if="task.completed" src="../assets/icons/check.svg" alt="">
+            </div>
         </div>
-        <div id="taskText" style="color:red">
+        <div id="taskText">
             {{ task.name }}
         </div>
         

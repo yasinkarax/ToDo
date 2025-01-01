@@ -28,14 +28,14 @@ export default {
     },
     methods: {
         addCategory(newCategory) {
-            this.category = newCategory;
-            this.categoryList.push({
-                id: this.categoryList.length + 1,
-                name: this.category,
+            const category = {
+                id: this.categoryId,
+                name: newCategory,
                 colors: { color: '#000000', backgroundColor: this.randomColor }
-            });
+            }
+            localStorage.setItem('categoryList', JSON.stringify(category));
         },
-        takeNewTask(NewTask){
+        takeNewTask(NewTask) {
             this.taskList.push(
                 {
                     id: this.taskId,
@@ -46,19 +46,35 @@ export default {
             )
             console.log(NewTask)
         }
-        
+
     },
     computed: {
-        categoryId(){
+        categoryId() {
             return this.categoryList.length + 1;
         },
-        taskId(){
+        taskId() {
             return this.taskList.length + 1;
         },
         randomColor() {
             let color = Math.floor(Math.random() * this.categoryList.length);
             let bgColor = this.categoryList[color].colors.backgroundColor;
             return bgColor;
+        }
+    },
+    mounted() {
+        const categoryList = localStorage.setItem('categoryList', JSON.stringify(this.categoryList));
+        const taskList = localStorage.setItem('taskList', JSON.stringify(this.taskList));
+
+        if (!categoryList) {
+            localStorage.setItem('categoryList', JSON.stringify(this.categoryList))
+        } else {
+            this.categoryList = categoryList;
+        }
+
+        if (!taskList) {
+            localStorage.setItem('taskList', JSON.stringify(this.taskList))
+        } else {
+            this.taskList = taskList
         }
     }
 }

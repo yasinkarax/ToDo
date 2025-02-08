@@ -6,7 +6,7 @@ export default {
             inputText: 'Add a new task',
             addNewTaskButton: 'Add Task',
             NewTask: {
-                task: '',
+                name: '',
                 category: ''
             },
             errorMessage: false,
@@ -21,30 +21,32 @@ export default {
     },
     methods: {
         sendNewTask() {
-            if (this.NewTask.task.trim()) {
+            if (this.NewTask.name.trim()) {
                 this.$emit('take-new-task', this.NewTask);
             } else {
                 this.errorMessage = true;
             }
-            this.NewTask = { task: '', category: '' };
-
+            this.NewTask = { name: '', category: '' };
         },
         categoriesToggle() {
             this.visibilityCategories = !this.visibilityCategories;
         },
         chooseCategory(category) {
             this.visibilityCategories = !this.visibilityCategories;
-            this.NewTask.category = category.name;
-        },
-        closeCategoryList(event) {
-            if (event.target.class !== 'category') {
-                this.visibilityCategories = false;
-            }
+            this.NewTask.category = category.name; // Store only the category name
         },
     },
-
+    mounted() {
+        document.addEventListener('click', (event) => {
+            const categoriesElement = this.$refs.category;
+            if (categoriesElement && !categoriesElement.contains(event.target)) {
+                this.visibilityCategories = false;
+            }
+        });
+    }
 }
 </script>
+
 <template>
     <div class="addTasksContainer">
         <div class="addTasksHead">
@@ -53,14 +55,12 @@ export default {
         <form @submit.prevent="sendNewTask">
             <div id="newTask">
                 <div id="newTaskInputContainer">
-                    <input type="text" :placeholder="inputText" v-model="NewTask.task" id="newTaskInput" required
-                        maxlength="20">
+                    <input type="text" :placeholder="inputText" v-model="NewTask.name" id="newTaskInput" required maxlength="20">
                 </div>
                 <div id="categories" :class="{ scrollCategories: categoryList.length > 5 }">
-                    <div id="categoriesToggle" tabindex="0" @click="categoriesToggle"
-                        :style="[NewTask.category.colors,]">
+                    <div id="categoriesToggle" tabindex="0" @click="categoriesToggle">
                         <span v-if="!NewTask.category">Select a category</span>
-                        {{ NewTask.category.name }}
+                        <span v-else>{{ NewTask.category }}</span>
                     </div>
 
                     <div tabindex="0" class="category" ref="category" @click="chooseCategory(category)"

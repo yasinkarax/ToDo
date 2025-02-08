@@ -1,9 +1,10 @@
 #category {
-  border-right: 1px solid #000;
   height: 100vh;
   padding: 7rem 4rem 0rem 0rem;
 }
-
+.categories {
+  border-right: 1px solid #000;
+}
 .categoryTitle {
   display: flex;
   font-size: 2rem;

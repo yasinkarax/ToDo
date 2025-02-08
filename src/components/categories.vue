@@ -1,6 +1,6 @@
 <script>
 export default {
-    data(){
+    data() {
         return {
             AddNewCategory: {
                 addCategoryButton: "Add New category",
@@ -18,17 +18,17 @@ export default {
         }
     },
     methods: {
-        addNewCategory(){
+        addNewCategory() {
             if (this.newCategory.trim() !== '') {
                 this.$emit('add-category', this.newCategory);
                 this.newCategory = '';
             }
-            
+
             console.log(this.categoryList.length)
         }
     },
     computed: {
-        categoryCounter(){
+        categoryCounter() {
             return this.categoryList.length;
         }
     }
@@ -36,30 +36,23 @@ export default {
 </script>
 
 <template>
-    
+
     <div id="category">
         <div class="categoryTitle" id="categoryTitle">
 
             <div class="categoryListName">
-                {{categoryListName}}  
+                {{ categoryListName }}
             </div>
             <div :class="categoryCount">
                 ({{ categoryCounter }})
             </div>
 
         </div>
-        <div 
-            id="categoryList"
-            :class="{scrollCategories: categoryList.length > 6}"
-            >
+        <div id="categoryList" :class="{ scrollCategories: categoryList.length > 6 }">
 
             <ul>
-                <li 
-                    :key="category.id" 
-                    v-for="category in categoryList"
-                    class="categoryItem"
-                >
-                    {{category.name}}
+                <li :key="category.id" v-for="category in categoryList" class="categoryItem">
+                    {{ category.name }}
                 </li>
             </ul>
 
@@ -67,20 +60,11 @@ export default {
         <div class="addCategory" id="addCategory">
 
             <form @submit.prevent="addNewCategory">
-                <input 
-                name="newCategory" 
-                type="text" 
-                v-model="newCategory" 
-                :placeholder="AddNewCategory.addCategoryText"
-                id="newCategory"
-                maxlength="19"
-            >
+                <input name="newCategory" type="text" v-model="newCategory"
+                    :placeholder="AddNewCategory.addCategoryText" id="newCategory" maxlength="19">
 
-                <button 
-                    type="submit"
-                    id="addNewCategoryButton"
-                >
-                    {{AddNewCategory.addCategoryButton}}
+                <button type="submit" id="addNewCategoryButton">
+                    {{ AddNewCategory.addCategoryButton }}
                 </button>
             </form>
 

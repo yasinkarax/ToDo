@@ -28,26 +28,23 @@ export default {
         tasklist
     },
     methods: {
-        addCategory(newCategory) {
-            const category = {
+        addCategory(category) {
+            const newCategory = {
                 id: this.categoryId,
-                name: newCategory,
+                name: category,
                 colors: { color: '#000000', backgroundColor: this.randomColor }
-            }
-            this.userData.categoryList.push(category);
+            };
+            this.userData.categoryList.push(newCategory);
             this.updateLocalStorage();
         },
         takeNewTask(NewTask) {
-            this.userData.taskList.push(
-                {
-                    id: this.taskId,
-                    name: NewTask.task,
-                    category: NewTask.category.name,
-                    completed: false
-                }
-            )
+            const newTask = {
+                ...NewTask,
+                id: this.taskId,
+                completed: false
+            };
+            this.userData.taskList.push(newTask)
             this.updateLocalStorage();
-            console.log(NewTask)
         },
         updateLocalStorage() {
             localStorage.setItem('userData', JSON.stringify(this.userData));
